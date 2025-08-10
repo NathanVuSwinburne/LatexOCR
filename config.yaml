@@ -1,0 +1,48 @@
+# Training configuration for CROHME LaTeX OCR
+model_name: "pix2tex_crohme"
+seed: 42
+
+# Dataset paths
+data: "splitted_dataset/train.pkl"
+valdata: "splitted_dataset/val.pkl"
+
+# Model architecture
+max_dimensions: [672, 192]
+min_dimensions: [32, 32]
+patch_size: 16
+embed_dim: 256
+encoder_depth: 4
+decoder_depth: 4
+heads: 8
+temperature: 0.2
+
+# Training hyperparameters
+epochs: 15
+lr: 1e-4
+betas: [0.9, 0.999]
+weight_decay: 1e-4
+batch_size: 8
+eval_batch_size: 8
+max_seq_len: 512
+
+# Tokenizer settings (using default pix2tex tokenizer)
+num_tokens: 8000
+bos_token: 1
+eos_token: 2
+pad_token: 0
+
+# Training settings
+save_freq: 1
+test_freq: 1
+gradient_clip_val: 1.0
+find_lr: false
+warmup_steps: 1000
+
+# Hardware settings
+device: "cuda"
+num_workers: 4
+pin_memory: true
+
+# Checkpoint settings
+checkpoint_dir: "checkpoints"
+resume_from_checkpoint: null

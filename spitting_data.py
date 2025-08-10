@@ -24,10 +24,10 @@ image_data = []
 for img_path in image_paths:
     if img_path.stem.isdigit():
         idx = int(img_path.stem)
-        if idx < len(all_labels):  # Make sure we have a label for this image
+        if idx < len(all_labels) and all_labels[idx].strip():  # Check if label is not empty
             image_data.append({
                 'path': img_path,
-                'label': all_labels[idx],
+                'label': all_labels[idx].strip(),  # Clean up whitespace
                 'idx': idx
             })
 
